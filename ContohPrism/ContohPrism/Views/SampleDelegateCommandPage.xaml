@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:cc="clr-namespace:ContohPrism.Converters"
+             x:Class="ContohPrism.Views.SampleDelegateCommandPage" 
+             Title="Delegate Command">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <cc:SwitchSelectedConverter x:Key="switchToggledConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout Orientation="Vertical">
+            <Switch IsToggled="{Binding IsEnabled}">
+                <Switch.Behaviors>
+                    <b:EventToCommandBehavior EventName="Toggled" 
+                                              Command="{Binding ToggleCommand}"
+                                              EventArgsConverter="{StaticResource switchToggledConverter}"/>
+                </Switch.Behaviors>
+            </Switch>
+            <Label Text="{Binding IsEnableButton}" />
+        </StackLayout>
+        <Button IsEnabled="{Binding IsEnableButton}"  Command="{Binding SubmitCommand}" Text="Submit" />
+        <Label Text="{Binding UpdateText}" FontSize="Medium" />
+    </StackLayout>
+</ContentPage>

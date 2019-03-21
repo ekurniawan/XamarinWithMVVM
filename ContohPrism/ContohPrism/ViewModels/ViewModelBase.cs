@@ -9,7 +9,8 @@ namespace ContohPrism.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
-        protected INavigationService NavigationService { get; private set; }
+      
+        public INavigationService NavigationService { get; private set; }
 
         private string _title;
         public string Title

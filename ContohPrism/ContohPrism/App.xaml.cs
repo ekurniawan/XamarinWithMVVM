@@ -4,6 +4,7 @@ using ContohPrism.ViewModels;
 using ContohPrism.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ContohPrism.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ContohPrism
@@ -22,14 +23,26 @@ namespace ContohPrism
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            //await NavigationService.NavigateAsync("PrismMasterDetailPage/NavigationPage/CalculatorPage");
+            //await NavigationService.NavigateAsync("PrismTabbedPage");
+            await NavigationService.NavigateAsync("NavigationPage/ListRestaurantPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
+            containerRegistry.RegisterForNavigation<SampleDelegateCommandPage, SampleDelegateCommandPageViewModel>();
+            containerRegistry.RegisterForNavigation<CalculatorPage, CalculatorPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListArtikelPage, ListArtikelPageViewModel>();
+            containerRegistry.RegisterForNavigation<PrismMasterDetailPage, PrismMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<PrismTabbedPage, PrismTabbedPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListRestaurantPage, ListRestaurantPageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailRestaurantPage, DetailRestaurantPageViewModel>();
+
+            //daftarkan Services
+            containerRegistry.RegisterInstance<IRestaurant>(new RestaurantServices());
         }
     }
 }
