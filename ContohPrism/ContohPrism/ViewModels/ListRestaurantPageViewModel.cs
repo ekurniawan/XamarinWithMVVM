@@ -54,9 +54,19 @@ namespace ContohPrism.ViewModels
             //ItemSelected = obj;
             var par = new NavigationParameters();
             par.Add("model", obj);
-            await NavigationService.NavigateAsync("NavigationPage/DetailRestaurantPage", par);
+            await NavigationService.NavigateAsync("DetailRestaurantPage", par);
 
             //_dialogService.DisplayAlertAsync("Keterangan", $"Judul: {obj.namarestaurant}", "OK");
+        }
+
+        //untuk tombol nav add
+        private DelegateCommand _navAddCommand;
+        public DelegateCommand NavAddCommand =>
+            _navAddCommand ?? (_navAddCommand = new DelegateCommand(ExecuteNavAddCommand));
+
+        private async void ExecuteNavAddCommand()
+        {
+            await NavigationService.NavigateAsync("AddRestaurantPage");
         }
     }
 }

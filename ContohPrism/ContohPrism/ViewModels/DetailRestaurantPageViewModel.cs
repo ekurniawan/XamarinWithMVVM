@@ -63,7 +63,9 @@ namespace ContohPrism.ViewModels
         {
             try
             {
-                await _restoServices.DeleteRestaurant(ItemRestaurant.categoryid);
+                await _restoServices.DeleteRestaurant(ItemRestaurant.restaurantid);
+                await _dialogService.DisplayAlertAsync("Informasi", "Data Berhasil Didelete", "OK");
+                await NavigationService.GoBackAsync();
             }
             catch (Exception ex)
             {

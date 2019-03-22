@@ -10,6 +10,9 @@
         <cc:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />
     </ContentPage.Resources>
     <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Command="{Binding NavAddCommand}" Text="Add New Resto" />
+        </StackLayout>
         <ListView ItemsSource="{Binding Restaurants}">
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped"

@@ -43,6 +43,7 @@ namespace ContohPrism
 
             //daftarkan Services
             containerRegistry.RegisterInstance<IRestaurant>(new RestaurantServices());
+            containerRegistry.RegisterForNavigation<AddRestaurantPage, AddRestaurantPageViewModel>();
         }
     }
 }
